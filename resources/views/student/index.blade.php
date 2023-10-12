@@ -21,7 +21,7 @@
             @endif
             <div class="card-header">
                 <h3 class="float-start">student details</h3>
-                <a href="{{ route('student.create') }}" class=" btn btn-outline-primary hover float-end">add new </a>
+                <a href="{{ route('student.create') }}" class=" btn btn-outline-primary hover float-end">Add Student </a>
             </div>
 
             <div class="card-body">
@@ -29,6 +29,7 @@
                     <tr>
                         <th>S/l</th>
                         <th>name</th>
+                        <th>image</th>
                         <th>roll</th>
                         <th>reg</th>
                         <th>email</th>
@@ -40,6 +41,9 @@
                         <tr>
                             <th>{{ $loop->iteration }}</th>
                             <th>{{ $student->name }}</th>
+                            <th>
+                                <img src="{{asset('storage/'. $student->image)}}" alt="{{$student->name}}" width="60px" height="60px">
+                            </th>
                             <th>{{ $student->roll }}</th>
                              <th>{{ $student->reg }}</th>
                             <th>{{ $student->email }}</th>

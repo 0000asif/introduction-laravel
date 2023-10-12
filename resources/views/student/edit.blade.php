@@ -16,13 +16,39 @@
 
             <div class="card-body">
 
-                <form action="{{Route('student.update',$student->id)}}" method="POST">
+                <form action="{{Route('student.update',$student->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <input type="text"  class="form-control mb-3" name="name" value="{{ $student->name}}" placeholder="enter your name" >
+                    @if ($errors->has("name"))
+                    <span class="text-danger" role="alert">{{$errors->first("name")}}</span>
+                    @endif
+
+                    <input type="file" accept="image/*" class="form-control mb-3" name="image">
+
+                    @if ($errors->has("image"))
+                    <span class="text-danger" role="alert">{{$errors->first("image")}}</span>
+                    @endif
+                    @if ($student->image)
+                    <div class="div">
+                        <img src="{{asset('storage/'. $student->image)}}" alt="{{$student->name}}" height="100px" width="100px" class="borderd">
+                    </div>
+                    @endif
                     <input type="text"  class="form-control mb-3" name="roll" value="{{ $student->roll}}" placeholder="enter your roll" >
+
+                    @if ($errors->has("roll"))
+                    <span class="text-danger" role="alert">{{$errors->first("roll")}}</span>
+                    @endif
                     <input type="text"  class="form-control mb-3" name="reg" value="{{ $student->reg}}" placeholder="enter your reg" >
+
+                    @if ($errors->has("reg"))
+                    <span class="text-danger" role="alert">{{$errors->first("reg")}}</span>
+                    @endif
                     <input type="email" class="form-control mb-3" name="email" value="{{ $student->email}}" placeholder="enter your email" >
+
+                    @if ($errors->has("email"))
+                    <span class="text-danger" role="alert">{{$errors->first("email")}}</span>
+                    @endif
                     <input type="submit" class="btn btn-outline-danger w-100" value="update">
                 </form>
             </div>

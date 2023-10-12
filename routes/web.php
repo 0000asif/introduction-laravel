@@ -17,7 +17,7 @@ use App\Http\Controllers\productController;
 //      return view('index');
 // });
 
-Route::get('/index', [productController::class, 'index'])->name('student.index');
+Route::get('/', [productController::class, 'index'])->name('student.index');
 Route::get('/create', [productController::class, 'create'])->name('student.create');
 Route::post('/store', [productController::class, 'store'])->name('student.store');
 Route::get('/edit/{id}', [productController::class, 'edit'])->name('student.edit');

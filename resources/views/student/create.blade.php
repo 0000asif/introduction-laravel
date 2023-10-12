@@ -16,12 +16,17 @@
 
             <div class="card-body">
 
-                <form action=" {{ route('student.store')}}" method="POST">
+                <form action=" {{ route('student.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <input type="text" class="form-control mb-3" value="{{old('name')}}" name="name" placeholder="enter your name" >
                     @if ($errors->has("name"))
                     <span class="text-danger" role="alert">{{$errors->first("name")}}</span>
+                    @endif
+
+                    <input type="file" class="form-control mb-3" accept="image/*" name="image">
+                    @if ($errors->has("image"))
+                    <span class="text-danger" role="alert">{{$errors->first("image")}}</span>
                     @endif
 
                     <input type="text" class="form-control mb-3" value="{{old('roll')}}" name="roll" placeholder="enter your roll" >
